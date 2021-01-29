@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { render } from 'react-dom'
 
 /*
@@ -20,10 +20,22 @@ import { render } from 'react-dom'
 */
 
 function App() {
+  const [count, setCount] = useState(0);
   const cohort = "PT25"
+  const incrementByOne = () =>{
+    setCount(count + 1)
+  }
+  const incrementByFive = () =>{
+    setCount(count * 5);
+  }
   return (
     <div className="container">
-      <h1>Welcome to React, Web {cohort}</h1>
+      <h1>React Counter</h1>
+  <h2>Count: {count}</h2>
+      { count === 0 ?<h3>Increment me!</h3> : <h3>Good Job</h3>}
+      <button onClick={incrementByOne} >Increment by 1</button>
+      <button onClick={incrementByFive}>Multiply by 5</button>
+      <button onClick={() =>{setCount(0)}}>Reset</button>
     </div>
   )
 }
